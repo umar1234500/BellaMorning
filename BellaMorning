@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Good Morning Bella</title>
+<style>
+  body{
+    margin:0; overflow:hidden; height:100vh;
+    background: linear-gradient(#0a1a2f, #1c3b57);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+  .msg{
+    position:fixed; inset:0; display:grid; place-items:center;
+    text-align:center; padding:24px; pointer-events:none;
+  }
+  .msg h1{
+    margin:0; font-size:clamp(30px, 6vw, 64px);
+    color:#fff; text-shadow:0 6px 20px rgba(0,0,0,.45);
+    animation:fadeIn 1.2s ease-out both;
+  }
+  .msg p{
+    margin-top:14px; font-size:clamp(16px, 3vw, 24px);
+    color:rgba(255,255,255,.9); text-shadow:0 4px 14px rgba(0,0,0,.35);
+    animation:fadeIn 1.8s ease-out both;
+  }
+  @keyframes fadeIn{ from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:translateY(0);} }
+  .fall{
+    position:fixed; top:-10px; font-size:22px;
+    animation: fall linear infinite; user-select:none; pointer-events:none;
+  }
+  @keyframes fall{ to{ transform: translateY(110vh); } }
+</style>
+</head>
+<body>
+
+<div class="msg">
+  <div>
+    <h1>✨🌸 Good Morning, Bella 🌸✨</h1>
+    <p>Your boy (Umar) is proud of you!</p>
+  </div>
+</div>
+
+<script>
+  const symbols = ["❄️","🌸","⭐","🌼","🌟","🌺"];
+  function spawn(){
+    const el = document.createElement("div");
+    el.className = "fall";
+    el.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+    el.style.left = Math.random()*100 + "vw";
+    el.style.animationDuration = (3 + Math.random()*5) + "s";
+    el.style.opacity = (0.3 + Math.random()*0.7);
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 9000);
+  }
+  setInterval(spawn, 180);
+</script>
+
+</body>
+</html>
