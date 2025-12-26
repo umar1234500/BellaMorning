@@ -3,66 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Good Morning, Bella</title>
+<title>For Bella</title>
 <style>
   body{
     margin:0; overflow:hidden; height:100vh;
     background: linear-gradient(#0a1a2f, #1c3b57);
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  }
-
-  /* Center message (always visible) */
-  .msg{
-    position:fixed; inset:0;
-    display:grid; place-items:center;
-    text-align:center; padding:24px;
-    pointer-events:none;
-  }
-  .msg h1{
-    margin:0;
-    font-size:clamp(30px, 6vw, 64px);
-    color:#fff;
-    text-shadow:0 6px 20px rgba(0,0,0,.45);
-  }
-  .msg p{
-    margin:12px 0 0;
-    font-size:clamp(16px, 3vw, 24px);
-    color:rgba(255,255,255,.9);
-    text-shadow:0 4px 14px rgba(0,0,0,.35);
-  }
-
-  /* Popup (custom modal) */
-  .popup{
-    position:fixed; inset:0;
-    display:grid; place-items:center;
-    background:rgba(0,0,0,.35);
-    padding:20px;
-  }
-  .card{
-    background:rgba(255,255,255,.12);
-    border:1px solid rgba(255,255,255,.25);
-    backdrop-filter: blur(10px);
-    border-radius:18px;
-    padding:18px 18px;
-    color:#fff;
-    max-width:520px;
-    width:min(520px, 100%);
-    box-shadow:0 18px 50px rgba(0,0,0,.35);
-    text-align:center;
-  }
-  .card .big{
-    font-size:clamp(22px, 4.8vw, 40px);
-    margin:0 0 8px;
-  }
-  .btn{
-    margin-top:12px;
-    display:inline-block;
-    pointer-events:auto;
-    cursor:pointer;
-    border:0;
-    border-radius:12px;
-    padding:10px 14px;
-    font-size:16px;
   }
 
   /* Falling items */
@@ -72,46 +18,157 @@
     animation: fall linear infinite;
     user-select:none;
     pointer-events:none;
+    filter: drop-shadow(0 6px 10px rgba(0,0,0,.25));
   }
   @keyframes fall{ to{ transform: translateY(110vh); } }
+
+  /* Popup overlay */
+  .overlay{
+    position:fixed; inset:0;
+    display:grid; place-items:center;
+    background: rgba(0,0,0,.45);
+    padding: 18px;
+  }
+
+  /* Popup card */
+  .card{
+    width: min(900px, 100%);
+    max-height: min(82vh, 820px);
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 18px 60px rgba(0,0,0,.45);
+    color: #fff;
+    overflow: hidden;
+  }
+
+  .header{
+    padding: 18px 18px 12px;
+    border-bottom: 1px solid rgba(255,255,255,.18);
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .header h1{
+    margin:0;
+    font-size: clamp(18px, 3.8vw, 28px);
+    letter-spacing:.2px;
+  }
+
+  .btn{
+    border: 0;
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    pointer-events:auto;
+  }
+
+  .content{
+    padding: 16px 18px 18px;
+    overflow:auto;
+    line-height: 1.55;
+    font-size: 16px;
+    white-space: pre-wrap; /* keeps your paragraphs nicely */
+  }
+
+  .signature{
+    margin-top: 14px;
+    opacity: .95;
+  }
+
+  /* Small “open again” button after closing */
+  .open-again{
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    border: 1px solid rgba(255,255,255,.25);
+    background: rgba(255,255,255,.10);
+    color: #fff;
+    border-radius: 999px;
+    padding: 10px 14px;
+    cursor: pointer;
+    display: none;
+    backdrop-filter: blur(10px);
+  }
 </style>
 </head>
 
 <body>
-  <!-- Always-visible message -->
-  <div class="msg">
-    <div>
-      <h1>✨🌸 Good Morning, Bella 🌸✨</h1>
-      <p>I am proud of you.</p>
+  <!-- Popup -->
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true">
+    <div class="card">
+      <div class="header">
+        <h1>Good Morning, Bella — I am proud of you ❄️🌸⭐</h1>
+        <button class="btn" id="closeBtn">Close</button>
+      </div>
+
+      <div class="content" id="message">
+Finally!! You have made it here.  A thousand emotions must be living in your heart all at once; excitement, hope, fear, courage, and the gentle sadness of stepping away from the home that raised you. I want you to know, my girl, that every emotion you’re feeling is valid, every tremble in your heart is understood, and every tear you wipe is seen by me even from miles away. You are not going into this journey alone. I am with you, Jana… every moment, every step, every breath.
+
+My Love, I know how deeply you care for your family; how their warmth, their laughter, their presence has shaped you into the brilliant, compassionate, and resilient woman you are. Leaving them for the very first time is not easy. This transition, this distance, this huge leap into a different world, especially for someone as gentle-hearted as you, is naturally heavy. But, my bella, this journey is not just about leaving something behind, it’s about becoming everything you are destined to be.
+
+You came Russia not just as a student, but as a dream-carrier, a fighter, a healer in the making. You are stepping into a world that will refine you, strengthen you, challenge you, and finally transform you into the doctor you always saw in your dreams. And I want you to hold my words close to your heart: I believe in you. I believe in your strength. I believe in every part of you that fights, hopes, studies, and rises.
+
+My girl, I want to reassure you again and again, I am here, right beside you, even from another country. You are not walking alone into this; you are walking with my love wrapped around you, with my prayers protecting you, and with my heart beating proudly for you.
+
+I feel you with me physically, even when you’re far away. I feel your presence in my chest, in my breath, in the rhythm of my days. Distance has no power over what I feel for you, Jana. It cannot reduce the warmth of your voice, the softness of your laugh, or the strength of our bond. If anything, this journey will only deepen what we share, because love like ours grows even across oceans.
+
+My strong baby girl, there will be days in Russia when the cold might feel too sharp, when the nights might feel too silent, and when your heart may miss home so deeply it aches, but I will be there, Love. I will be your warmth, your comfort, your familiar voice in the chaos. Call me anytime, cry if you need to, laugh with me when you can, I am yours, in every way.
+
+And remember this, bella: Your journey is not just yours-it is ours. We are working for a future where your white coat meets my dreams, where your victories feel like my victories, and where every struggle becomes a shared story we overcame together. We are building something beautiful; slowly, steadily, lovingly.
+
+So go forward with courage, Jana… go with the strength I see in you every day. You are meant for greatness, for healing others, for shining in places far bigger than the ones you know now. And no matter where you go, my heart will travel with you.
+I love you endlessly, deeply, madly.
+
+Always yours,
+Umar
+      </div>
     </div>
   </div>
 
-  <!-- Popup message (tap/click OK to close) -->
-  <div class="popup" id="popup">
-    <div class="card">
-      <div class="big">✨🌸 Good Morning, Bella 🌸✨</div>
-      <div style="font-size:18px;">I am proud of you.</div>
-      <button class="btn" onclick="document.getElementById('popup').style.display='none'">
-        OK
-      </button>
-    </div>
-  </div>
+  <button class="open-again" id="openAgain">Open message 💌</button>
 
 <script>
-  const symbols = ["❄️","🌸","⭐","🌼","🌟","🌺"];
-
+  // Falling snow, flowers, stars
+  const symbols = ["❄️","🌸","⭐","🌼","🌟","🌺","❄️"];
   function spawn(){
     const el = document.createElement("div");
     el.className = "fall";
     el.textContent = symbols[Math.floor(Math.random()*symbols.length)];
     el.style.left = Math.random()*100 + "vw";
-    el.style.animationDuration = (3 + Math.random()*5) + "s";
-    el.style.opacity = (0.3 + Math.random()*0.7);
+    el.style.animationDuration = (3 + Math.random()*6) + "s";
+    el.style.opacity = (0.25 + Math.random()*0.75);
+    el.style.fontSize = (18 + Math.random()*14) + "px";
     document.body.appendChild(el);
-    setTimeout(() => el.remove(), 9000);
+    setTimeout(() => el.remove(), 11000);
+  }
+  setInterval(spawn, 160);
+
+  // Popup open/close
+  const overlay = document.getElementById("overlay");
+  const closeBtn = document.getElementById("closeBtn");
+  const openAgain = document.getElementById("openAgain");
+
+  function closePopup(){
+    overlay.style.display = "none";
+    openAgain.style.display = "block";
+  }
+  function openPopup(){
+    overlay.style.display = "grid";
+    openAgain.style.display = "none";
   }
 
-  setInterval(spawn, 180);
+  closeBtn.addEventListener("click", closePopup);
+  openAgain.addEventListener("click", openPopup);
+
+  // Optional: close on ESC
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overlay.style.display !== "none") closePopup();
+  });
 </script>
 </body>
 </html>
